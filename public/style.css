@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue&display=swap');
+
+*{
+    margin-top: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.fundo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    background: linear-gradient(45deg, #151515, #301B3F, #3C415C, #B4A5A5);
+    background-size: 300% 300%;
+    animation: coresFundo 15s ease infinite;
+}
+
+@keyframes coresFundo{
+
+    0%{
+        background-position: 0%, 50%;
+    }
+
+    50%{
+        background-position: 100% 50%; 
+    }
+
+    100%{
+        background-position: 0% 50%;
+    }
+
+}
+
+.central-box{
+    justify-content: center;
+
+}
+
+.div-title{
+    display: block;
+    justify-content: center;
+
+}
+
+.p-title{
+    display: flex;
+    justify-content: center;
+    font-size: 18pt;
+    font-weight: bolder;
+    color: white;
+}
+
+.p-subTitulo{
+    display: flex;
+    justify-content: center;
+    font-size: 10pt;
+    overflow: visible;
+    color: white; 
+}
+
+.div-search{
+
+    display: flex;
+    justify-content: center;
+}
+
+.divSearch{
+
+    justify-content: left;
+    padding: 10px 10px;
+}
+
+.search-field{   
+
+    justify-content: left;
+    border-style: unset;
+    text-align: center;
+    border-bottom-left-radius: 13px;
+    border-top-left-radius: 13px;
+    width: 300px;
+    height: 40px;
+    
+}
+
+.search-field:active{
+    outline: outset;
+    
+}
+
+.divBtnSearch{
+
+    display: flex;
+    justify-content: right;
+    padding: 10px 10px;
+
+}
+
+.btn-search{
+
+    display: flex;
+    height: 40px;
+    border-bottom-right-radius: 13px;
+    border-top-right-radius: 13px;
+    margin-left: -19.8px;
+    width: 40px;
+    text-align: center;
+    border-style:inherit;
+    justify-content: center;
+    cursor:pointer;
+    transition-duration: 0.4s;
+    
+}
+
+.btn-search:active{
+    background-color: #636b97;
+}
+.btn-search:hover{
+    animation: animMouseEmCimaBtn 0.5s;
+}
+
+@keyframes animMouseEmCimaBtn {
+
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+
+}
+
+
+
+.divListaMerc, .divAmz{
+
+    text-align: center;
+    align-content: center;
+    position: relative;
+    margin-top: 60px;
+    
+}
+
+.divProduto{
+    align-content: center;
+    display: inline-block;
+    background-color: white;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 10pt;
+    width: 300px; 
+    height: 230px;
+    margin: 10px;
+    padding: 20px 30px;
+    border-radius: 13px;
+    vertical-align: top;
+}
+
+.imgProd{
+    height: 80px;
+    width: 80px;
+}
+
+.imgLoja{
+    height: 70px;
+    width: 70px;
+}

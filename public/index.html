@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="C:\Users\Pichau\Desktop\ProjetoTCC\index.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>Price Scavenger</title>
+</head>
+
+<script></script>
+
+<body class="fundo">
+
+    <form id="pesquisaForm" action="/envia-dados" method="post">
+
+    <div class="central-box">
+
+        <div class="div-title">
+
+            <div class="title">
+                <p class="p-title"> Bem-Vindo ao Price Scavenger </p>
+            </div>
+
+            <div class="subTitulo">
+                <p class="p-subTitulo"> localize os melhores produtos, com melhores preços, de lojas confiáveis </p>
+            </div>
+
+        </div>
+
+        <div class="div-search">    
+
+            <div class="divSearch">
+                <input type="search" name="search" class="search-field" placeholder="Insira o nome do produto...">
+            </div>
+
+            <div class="divBtnSearch">
+
+                <input type="submit" name="btnSearch" class="btn-search" value="🔍">
+
+            </div>
+
+        </div>
+
+        <div class="listas">
+
+            <div class="divListaMerc"></div>
+            
+            <div class="divAmz"></div>
+
+        </div>
+            
+        
+    </div>
+
+</form>
+
+<script>
+
+    const form = document.querySelector('#pesquisaForm');
+    const barraDePesquisa = document.querySelector('.search');
+
+    form.addEventListener('submit', function(event){
+
+        if(!barraDePesquisa.value){
+            event.preventDefault();
+        }
+
+    });
+
+
+    fetch('/listaMerc')
+        .then(response => response.json())
+        .then(listaMerc => {
+            const divListaMerc = document.querySelector('.divListaMerc');
+
+            listaMerc.forEach(produto => {
+                const divProduto = document.createElement('div');
+                divProduto.className = 'divProduto';
+                
+                const imgLoja = document.createElement('img')
+                imgLoja.src = "https://logospng.org/download/mercado-livre/logo-mercado-livre-512.png";
+                imgLoja.className = 'imgLoja';
+                divProduto.appendChild(imgLoja);
+
+                const imgProd = document.createElement('img');
+                imgProd.src = produto.img;
+                imgProd.className = 'imgProd';
+                divProduto.appendChild(imgProd);
+
+                const tituloProd = document.createElement('p');
+                tituloProd.textContent = produto.titulo;
+                divProduto.appendChild(tituloProd);
+
+                const precoProd = document.createElement('p')
+                precoProd.textContent = `Preço: R$${produto.preco}`
+                divProduto.appendChild(precoProd);
+
+                const linkProd = document.createElement('a')
+                linkProd.href = produto.link;
+                linkProd.textContent = `Link para a loja`;
+                divProduto.appendChild(linkProd);
+
+                divListaMerc.appendChild(divProduto);
+
+            })
+
+        })
+    
+        c = 0;
+
+    fetch('listaAmz')
+        .then(response => response.json())
+        .then(listaAmz => {
+            const divAmz = document.querySelector('.divAmz');
+
+            listaAmz.forEach(produto => {
+                const divProduto = document.createElement('div');
+                divProduto.className = 'divProduto';
+
+                const imgLoja = document.createElement('img')
+                imgLoja.src = "https://upload.wikimedia.org/wikipedia/commons/d/de/Amazon_icon.png";
+                imgLoja.className = 'imgLoja';
+                divProduto.appendChild(imgLoja);
+
+                const imgProd = document.createElement('img');
+                imgProd.src = produto.img;
+                imgProd.className = 'imgProd';
+                divProduto.appendChild(imgProd)
+
+                const tituloProd = document.createElement('p');
+                tituloProd.textContent = produto.titulo;
+                divProduto.appendChild(tituloProd);
+
+                const precoProd = document.createElement('p')
+                precoProd.textContent = `Preço: ${produto.preco}`
+                divProduto.appendChild(precoProd);
+
+                const linkProd = document.createElement('a')
+                linkProd.href = produto.link;
+                linkProd.textContent = `Link para a loja`;
+                divProduto.appendChild(linkProd)
+                
+                divAmz.appendChild(divProduto);
+
+            })
+
+        })
+
+</script>
+
+</body>
+
+</html>
